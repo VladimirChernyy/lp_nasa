@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-xxl-5 col-11">
+				<p class="text-center h1">Космическое агентство</p>
+				<p class="text-center text-muted">Национальное управление по
+					аэронавтике и
+					исследованию космического пространства — ведомство, относящееся к
+					федеральному правительству США и подчиняющееся непосредственно
+					президенту США.</p>
+			</div>
+		</div>
+		<div class="row justify-content-center text-center">
+			<div class="col-xxl-5 col-12">
+				<div class="row row-cols-2 justify-content-center">
+					<div class="col">
+						<img src="{% static 'img/1.png' %}" alt="" class="top-image2">
+					</div>
+					<div class="col">
+						<img src="{% static 'img/2.png' %}" alt="" class="top-image2">
+					</div>
+					<div class="col">
+						<img src="{% static 'img/3.png' %}" alt="" class="top-image2">
+					</div>
+					<div class="col">
+						<img src="{% static 'img/4.png' %}" alt="" class="top-image2">
+					</div>
+				</div>
+			</div>
+			<div class="col-xxl-4 col-12">
+				<div class="col-xxl-6 col-12 text-center">
+					<img src="{% static 'img/space.png' %}" alt="" width="457"
+					     height="457" class="top-image">
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="container-fluid" style="background: #3C3C3C ">
+		<div class="row justify-content-center">
+
+			<div class="p-4 row text-center text-white "><h2>Фотографии</h2></div>
+			<div class="col-xxl-9 col-12">
+				<div class="sliders-two row justify-content-center">
+					{% for obj in object_list.qs %}
+						<div class="slider-block text-center">
+							<div class="slider-wrapper">
+								{% thumbnail obj.image "750x420" crop="center" as im %}
+									<a href="{{ obj.image.url }}" data-lightbox="image-gallery">
+									<img src="{{ obj.image.url }}" width="{{ im.width }}"
+									     height="{{ im.height }}"
+									     class= "shadow-lg mb-5 down-image custom-radius">
+									 </a>
+								{% endthumbnail %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-xxl-9 p-4 col-12">
+				<div class="sliders row">
+					{% for obj in object_list.qs %}
+						<div class="slider-block mb-4">
+							<div class="slider-wrapper">
+								{% thumbnail obj.image "165x165" crop="center" as im %}
+									<img src="{{ obj.image.url }}" width="{{ im.width }}"
+									     height="{{ im.height }}"
+									     class="border border-1 border-white down-image-slider custom-rounded">
+								{% endthumbnail %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     aria-label="Eighth navbar example">
+	<div class="container-fluid">
+
+		<div class="row w-100 inline-flex">
+			<div class="col-xxl-5 col-6 text-center">
+					<button class="navbar-toggler logo-button " type="button"
+					        data-bs-toggle="collapse"
+					        data-bs-target="#navbarToggleExternalContent"
+					        aria-controls="navbarToggleExternalContent"
+					        aria-expanded="false" aria-label="Toggle navigation">
+						<img src="{% static 'img/menu.png' %}" alt="menu">
+					</button>
+					<a class="navbar-brand" href="{% url 'lp:top_page' %}">
+						<img src="{% static 'img/logo.png' %}" alt="" class="logo p-1">
+					</a>
+			</div>
+			<div class="col-3 nav">
+				<div class="collapse navbar-collapse"
+				     id="navbarToggleExternalContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 text-end">
+						<li class="nav-item text-end">
+							<a class="nav-link active" aria-current="page"
+							   href="{% url 'lp:top_page' %}">Преймущества</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page"
+							   href="{% url 'lp:top_page' %}">Фотогалерея</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-xxl-4 col-3 align-self-center">
+				<button type="button" class="btn btn-danger button-exit button-color">Вход</button>
+			</div>
+		</div>
+	</div>
+</nav>
