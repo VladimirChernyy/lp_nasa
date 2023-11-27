@@ -41,37 +41,32 @@
 		</div>
 
 	</div>
-	<div class="container-fluid" style="background: #3C3C3C ">
+	<div class="container-fluid p-4" style="background: #3C3C3C ">
 		<div class="row justify-content-center">
-
-			<div class="p-4 row text-center text-white "><h2>Фотографии</h2></div>
+			<p class="text-center h1 text-white p-4">Фотографии</p>
 			<div class="col-xxl-9 col-12">
 				<div class="sliders-two row justify-content-center">
-					{% for obj in object_list.qs %}
+					{% for obj in object_list %}
 						<div class="slider-block text-center">
 							<div class="slider-wrapper">
-								{% thumbnail obj.image "750x420" crop="center" as im %}
-									<a href="{{ obj.image.url }}" data-lightbox="image-gallery">
-									<img src="{{ obj.image.url }}" width="{{ im.width }}"
-									     height="{{ im.height }}"
-									     class= "shadow-lg mb-5 down-image custom-radius">
-									 </a>
-								{% endthumbnail %}
+								{% thumbnail obj.img 750x420 crop upscale subject_location=obj.img.url %}
+								<a href="{{ obj.image.url }}" data-lightbox="image-gallery">
+									<img src="{{ obj.image.url }}" width="750" height="420"
+									     class=" shadow-lg down-image custom-radius">
+								</a>
 							</div>
 						</div>
 					{% endfor %}
 				</div>
 			</div>
-			<div class="col-xxl-9 p-4 col-12">
+			<div class="col-xxl-9 col-12">
 				<div class="sliders row">
-					{% for obj in object_list.qs %}
-						<div class="slider-block mb-4">
+					{% for obj in object_list %}
+						<div class="slider-block py-4">
 							<div class="slider-wrapper">
-								{% thumbnail obj.image "165x165" crop="center" as im %}
-									<img src="{{ obj.image.url }}" width="{{ im.width }}"
-									     height="{{ im.height }}"
-									     class="border border-1 border-white down-image-slider custom-rounded">
-								{% endthumbnail %}
+								{% thumbnail obj.img 165x165 crop upscale %}
+								<img src="{{ obj.image.url }}" width="165" height="165"
+								     class="border border-1 border-white down-image-slider custom-rounded">
 							</div>
 						</div>
 					{% endfor %}

@@ -16,8 +16,9 @@ DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(' ')
 
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS',
-                                 'http://127.0.0.1:8000').split(' ')
+CSRF_TRUSTED_ORIGINS = os.getenv(
+    'CSRF_TRUSTED_ORIGINS', 'http://127.0.0.1:8000'
+).split()
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,8 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lp.apps.LpConfig',
     'django_filters',
-    'sorl.thumbnail',
+    # 'sorl.thumbnail',
     'adminsortable2',
+    'easy_thumbnails',
+    'filer',
 ]
 
 MIDDLEWARE = [
@@ -107,3 +110,11 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)

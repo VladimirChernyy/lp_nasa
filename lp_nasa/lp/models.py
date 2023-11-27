@@ -1,12 +1,17 @@
 from django.db import models
 
+from filer.fields.image import FilerImageField
+
 
 class SliderImage(models.Model):
     title = models.CharField(
         max_length=100
     )
-    image = models.ImageField(
-        upload_to='images/%Y/%m'
+    image = FilerImageField(
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="image"
     )
     pub_date = models.DateField(
         auto_now_add=True
