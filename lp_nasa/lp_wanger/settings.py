@@ -28,8 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lp.apps.LpConfig',
-    'django_filters',
-    # 'sorl.thumbnail',
     'adminsortable2',
     'easy_thumbnails',
     'filer',
