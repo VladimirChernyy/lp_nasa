@@ -36,7 +36,7 @@ source venv/bin/activate
 
 Установите зависимости
 ```
-pip install -r requirements.txt
+pip install -r req.pip
 ```
 Примените миграции
 ```
